@@ -5,6 +5,6 @@
  |_|   \___|\__, |\__,_|\__\___|_| |_|
             |___/
 
- :: Application :: demoThymeleaf
- :: Version     :: 3.4.4
- :: Time        :: 2025-06-07 11:11:43
+ :: Application :: ${spring.application.name}
+ :: Version     :: ${spring.boot.version}
+ :: Time        :: ${date}

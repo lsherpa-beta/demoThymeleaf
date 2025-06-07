@@ -5,7 +5,8 @@ plugins {
 }
 
 group = 'com.demo'
-version = '0.0.1-SNAPSHOT'
+version = '1.0.0-SNAPSHORT'
+ext.springBooVersion= '3.4.4'
 
 java {
 	toolchain {
@@ -37,3 +38,19 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+task generateBanner{
+	doLast {
+		def template = file("src/main/resources/banner-template.txt")
+		def banner = file("src/main/resources/banner.txt")
+
+		def text = template.text
+				.replace('${spring.boot.version}', springBooVersion)
+				.replace('${spring.application.name}', rootProject.name)
+				.replace('${date}', new Date().format("yyyy-MM-dd HH:mm:ss"))
+
+		banner.text = text
+	}
+}
+// Hook into resource processing
+processResources.dependsOn(generateBanner)
