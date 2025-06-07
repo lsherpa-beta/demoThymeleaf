@@ -22,30 +22,8 @@
 - Gradle
 - HTML / CSS
 
-
 ---
 
-## 📂 Project Structure
-
-demoThymeleaf/
-├── src/
-│ ├── main/
-│ │ ├── java/
-│ │ │ └── com/example/demo/
-│ │ │ ├── DemoThymeleafApplication.java
-│ │ │ └── controller/
-│ │ │ └── FileUploadController.java
-│ │ └── resources/
-│ │ ├── templates/
-│ │ │ ├── upload.html
-│ │ │ └── view.html
-│ │ └── application.properties
-├── uploads/ # Directory where uploaded files are saved
-├── build.gradle
-├── settings.gradle
-└── README.md
-
----
 
 ## ▶️ Getting Started
 
@@ -97,5 +75,10 @@ demoThymeleaf/
 - File storage in database or cloud (e.g., S3)
 
 - Authentication and user-specific file uploads
+---
+🎉 Happy Coding!
+Thanks for checking out demoThymeleaf!
+Feel free to contribute, report issues, or fork the repo.
+Happy coding! 🚀💻
 
 
