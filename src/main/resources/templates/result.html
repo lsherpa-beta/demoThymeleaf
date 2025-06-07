@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>File Content</title>
+    <title>File Content</title>
 </head>
+
 <body>
 <h2>File: <span th:text="${fileName}"></span></h2>
-<pre th:text="${fileContent}"></pre>
+<!-- Show image if it's an image file -->
+<div th:if="${imageDate}">
+    <h3>Image Preview:</h3>
+    <img th:src="'data:' + ${contentType} + ';base64,'+ ${imageDate}" style="max-width: fit-content; max-height: fit-content"/>
+</div>
+
+<!-- Show text content if not an image-->
+<div th:if="${fileContent}">
+    <h3> Text Content: </h3>
+    <pre th:text="${fileContent}"></pre>
+</div>
+
+
 <a href="/">Upload Another File</a>
+
 </body>
 </html>
