@@ -7,9 +7,17 @@
 <body>
 <h2>File: <span th:text="${fileName}"></span></h2>
 <!-- Show image if it's an image file -->
-<div th:if="${imageDate}">
+<div th:if="${imageData}">
     <h3>Image Preview:</h3>
-    <img th:src="'data:' + ${contentType} + ';base64,'+ ${imageDate}" style="max-width: fit-content; max-height: fit-content"/>
+    <img th:src="'data:' + ${contentType} + ';base64,'+ ${imageData}"
+         style="max-width: fit-content; max-height: fit-content"/>
+</div>
+
+<!-- Show the pdf file -->
+<div th:if="${pdfData}">
+    <iframe th:src="'data:' + ${contentType} + ';base64,' + ${pdfData}"
+            width="600" height="800" >
+    </iframe>
 </div>
 
 <!-- Show text content if not an image-->
