@@ -16,16 +16,24 @@
 <!-- Show the pdf file -->
 <div th:if="${pdfData}">
     <iframe th:src="'data:' + ${contentType} + ';base64,' + ${pdfData}"
-            width="600" height="800" >
+            width="600" height="800">
     </iframe>
 </div>
+<!-- Word File Viewer -->
+<div th:if="${docData}">
+    <h3>Word Document</h3>
+    <embed th:src="'data:' + ${contentType} + ';base64,' + ${docData}"
+           th:attr="type=${contentType}"
+           width="100%"
+           height="600px"/>
+</div>
+
 
 <!-- Show text content if not an image-->
 <div th:if="${fileContent}">
     <h3> Text Content: </h3>
     <pre th:text="${fileContent}"></pre>
 </div>
-
 
 <a href="/">Upload Another File</a>
 

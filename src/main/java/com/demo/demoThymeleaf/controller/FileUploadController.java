@@ -15,8 +15,7 @@ import java.util.stream.Collectors;
 public class FileUploadController {
 
     @GetMapping("/")
-    public String showUploadPage()
-    {
+    public String showUploadPage() {
         return "upload";
     }
 
@@ -32,13 +31,20 @@ public class FileUploadController {
                 byte[] bytes = file.getBytes();
                 String base64Image = Base64.getEncoder().encodeToString(bytes);
                 model.addAttribute("imageData", base64Image);
-            }else if(contentType!=null && contentType.equals("application/pdf")){
+            } else if (contentType != null && contentType.equals("application/pdf")) {
                 //convert pdf into Base64
                 byte[] bytes = file.getBytes();
-                String base64pdf = Base64.getEncoder().encodeToString(bytes);
-                model.addAttribute("pdfData", base64pdf);
+                String base64Pdf = Base64.getEncoder().encodeToString(bytes);
+                model.addAttribute("pdfData", base64Pdf);
 
-            }else {
+            } else if (contentType != null &&
+                    (contentType.equals("application/msword") ||
+                            contentType.equals("application/vnd.openxmlformats-officedocument.wordprocessingml.document"))) {
+                byte[] bytes = file.getBytes();
+                String base64Doc = Base64.getEncoder().encodeToString(bytes);
+                model.addAttribute("docData", base64Doc);
+
+            } else {
                 //assume it is a text file
                 String content = new BufferedReader(
                         new InputStreamReader(file.getInputStream(), StandardCharsets.UTF_8))
